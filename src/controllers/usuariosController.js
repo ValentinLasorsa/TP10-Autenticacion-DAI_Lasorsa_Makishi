@@ -5,14 +5,13 @@ import UsuarioService from '../services/usuarios-services.js';
 const router = Router();
 const svc = new UsuarioService();
 
-router.post('/login', async (req, res) => {
-    try {
-        let login = await svc.login(req.body.UserName, req.body.Password);
-        res.send(login);
-    } catch (error) {
-        res.send("error");
+router.post('/Login/', async (req, res) => {
+    let body = req.body;
+    console.log(body);
+    const newLogin = await svc.login(body) 
+    return res.status(200).json(newLogin);
     }
-});
+);
 
 
 export default router;
